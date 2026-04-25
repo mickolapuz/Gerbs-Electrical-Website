@@ -123,9 +123,64 @@ let theme = createTheme({
       styleOverrides: {
         root: {
           borderRadius: "999px",
-          padding: "10px 20px",
+          padding: "10px 22px",
+          boxShadow: "none",
+          textTransform: "none",
         },
       },
+
+      variants: [
+        {
+          props: { variant: "contained", color: "primary" },
+          style: {
+            backgroundColor: "#22346E",
+            color: "#FFFFFF",
+
+            "&:hover": {
+              backgroundColor: "#182653",
+              boxShadow: "none",
+            },
+          },
+        },
+        {
+          props: { variant: "contained", color: "secondary" },
+          style: {
+            backgroundColor: "#F9FAFB",
+            color: "#1A1A1A",
+            border: "1px solid #D1D5DB",
+
+            "&:hover": {
+              backgroundColor: "#F3F4F6",
+              borderColor: "#9CA3AF",
+              boxShadow: "none",
+            },
+          },
+        },
+        {
+          props: { variant: "outlined", color: "primary" },
+          style: {
+            borderColor: "#22346E",
+            color: "#22346E",
+
+            "&:hover": {
+              borderColor: "#182653",
+              backgroundColor: "#EAF0FF",
+            },
+          },
+        },
+        {
+          props: { variant: "outlined", color: "secondary" },
+          style: {
+            borderColor: "#6B7280",
+            color: "#4B5563",
+
+            "&:hover": {
+              borderColor: "#4B5563",
+              backgroundColor: "#F3F4F6",
+            },
+          },
+        },
+      ],
     },
 
     MuiContainer: {

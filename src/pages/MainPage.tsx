@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Box } from "@mui/material";
 
 import HeroSection from "../sections/HeroSection";
 import AboutSection from "../sections/AboutSection";
@@ -9,44 +9,58 @@ import ServicesSection from "../sections/ServicesSection";
 import ContactSection from "../sections/ContactSection";
 
 const styles = {
-  container: {
-    alignItems: "center",
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
+  page: {
+    width: "100%",
+    minHeight: "100vh",
+    overflowX: "hidden",
   },
-  item: {
-    alignItems: "center",
-    display: "flex",
-    height: "50vh",
+
+  section: {
+    width: "100%",
+    px: { xs: 2, md: 4 },
+    scrollMarginTop: {
+      xs: "80px",
+      md: "100px",
+    },
   },
 };
 
 const MainPage = () => {
   return (
-    <Grid container component="main" sx={styles.container}>
-      <Grid component="section" id="home" sx={styles.item}>
+    <Box component="main" sx={styles.page}>
+      <Box
+        aria-labelledby="hero-title"
+        component="section"
+        id="home"
+        sx={styles.section}
+      >
         <HeroSection />
-      </Grid>
-      <Grid component="section" id="about-us" sx={styles.item}>
+      </Box>
+
+      <Box component="section" id="about-us" sx={styles.section}>
         <AboutSection />
-      </Grid>
-      <Grid component="section" id="projects" sx={styles.item}>
+      </Box>
+
+      <Box component="section" id="projects" sx={styles.section}>
         <ProjectsSection />
-      </Grid>
-      <Grid component="section" id="permits-and-licenses" sx={styles.item}>
+      </Box>
+
+      <Box component="section" id="permits-and-licenses" sx={styles.section}>
         <PermitsLicensesSection />
-      </Grid>
-      <Grid component="section" id="products" sx={styles.item}>
+      </Box>
+
+      <Box component="section" id="products" sx={styles.section}>
         <ProductsSection />
-      </Grid>
-      <Grid component="section" id="services" sx={styles.item}>
+      </Box>
+
+      <Box component="section" id="services" sx={styles.section}>
         <ServicesSection />
-      </Grid>
-      <Grid component="section" id="contact-us" sx={styles.item}>
+      </Box>
+
+      <Box component="section" id="contact-us" sx={styles.section}>
         <ContactSection />
-      </Grid>
-    </Grid>
+      </Box>
+    </Box>
   );
 };
 

@@ -36,9 +36,21 @@ const styles = {
       backgroundImage: "url('/gerbs-colored-icon.png')",
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
-      backgroundSize: { xs: "320px", sm: "420px", md: "720px" },
-      opacity: { xs: 0.08, md: 0.1 },
+      backgroundSize: {
+        xs: "clamp(320px, 88vw, 500px)",
+        sm: "clamp(420px, 78vw, 620px)",
+        md: "720px",
+      },
+      opacity: 0.07,
     },
+  },
+  tagline: {
+    fontSize: { md: "1.8rem" },
+    fontWeight: 700,
+    lineHeight: 1.2,
+    maxWidth: 700,
+    textAlign: "center",
+    mt: 1,
   },
   overline: {
     color: "text.secondary",
@@ -46,7 +58,7 @@ const styles = {
     fontWeight: 600,
   },
   buttonsContainer: {
-    mt: 2,
+    mt: { xs: 3, md: 5 },
     gap: 1,
     display: "flex",
     justifyContent: "center",
@@ -118,7 +130,12 @@ const HeroSection = () => {
         <Typography id="hero-title" component="h1" variant="h1" color="primary">
           Gerb&apos;s Electrical Trading and Services
         </Typography>
-        <Typography component="p" variant="body1" color="secondary">
+        <Typography
+          component="p"
+          variant="body1"
+          color="secondary"
+          sx={styles.tagline}
+        >
           Built on Precision. Powered by Trust.
         </Typography>
         <Typography component="p" variant="overline" sx={styles.overline}>

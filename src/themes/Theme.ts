@@ -145,13 +145,14 @@ let theme = createTheme({
         {
           props: { variant: "contained", color: "secondary" },
           style: {
-            backgroundColor: "#F9FAFB",
-            color: "#1A1A1A",
-            border: "1px solid #D1D5DB",
+            backgroundColor: "#EEF3FB",
+            color: "#22346E",
+            border: "1px solid #D6E0F5",
+            boxShadow: "none",
 
             "&:hover": {
-              backgroundColor: "#F3F4F6",
-              borderColor: "#9CA3AF",
+              backgroundColor: "rgba(34, 52, 110, 0.10)",
+              borderColor: "rgba(34, 52, 110, 0.24)",
               boxShadow: "none",
             },
           },

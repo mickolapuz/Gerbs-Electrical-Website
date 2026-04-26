@@ -17,7 +17,6 @@ const styles = {
 
   section: {
     width: "100%",
-    px: { xs: 2, md: 4 },
     scrollMarginTop: {
       xs: "80px",
       md: "100px",

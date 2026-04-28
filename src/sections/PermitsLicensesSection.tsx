@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Box,
   Container,
@@ -5,7 +6,13 @@ import {
   Stack,
   Card,
   CardContent,
+  Link,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  IconButton,
 } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 
 import GerbsLogo from "../assets/CompanyLogos/Gerb's Colored Icon+Typography.png";
 import DTI from "../assets/PermitsLicenses/DTI.png";
@@ -25,6 +32,9 @@ interface PermitAndLicense {
   alt: string;
   text: string[];
 }
+
+const companyProfileUrl =
+  "/GERB'S ELECTRICAL TRADING & SERVICES COMPANY PROFILE 2026.pdf#page=28";
 
 const mainContent: MainContent = {
   logo: GerbsLogo,
@@ -154,87 +164,176 @@ const styles = {
     color: "text.secondary",
     lineHeight: 1.6,
   },
+
+  profileText: {
+    mt: { xs: 5, md: 6 },
+    color: "text.secondary",
+    lineHeight: 1.7,
+    textAlign: "left",
+  },
+
+  profileLink: {
+    p: 0,
+    border: 0,
+    fontWeight: 700,
+    color: "secondary.main",
+    textDecoration: "none",
+    cursor: "pointer",
+    verticalAlign: "baseline",
+    "&:hover": {
+      textDecoration: "underline",
+    },
+  },
+
+  dialogTitle: {
+    pr: 6,
+    fontWeight: 700,
+    color: "primary.main",
+  },
+
+  closeButton: {
+    position: "absolute",
+    right: 12,
+    top: 10,
+  },
+
+  dialogContent: {
+    p: 0,
+    height: { xs: "75vh", md: "82vh" },
+  },
+
+  pdfPreview: {
+    width: "100%",
+    height: "100%",
+    border: 0,
+    display: "block",
+  },
 };
 
 const PermitsLicensesSection = () => {
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+
   return (
-    <Box sx={styles.section}>
-      <Container maxWidth="lg">
-        <Box sx={styles.layout}>
-          <Box sx={styles.leftContent}>
-            <Box
-              component="img"
-              src={mainContent.logo}
-              alt="Gerb's Electrical Trading and Services company logo"
-              loading="lazy"
-              decoding="async"
-              sx={styles.logo}
-            />
+    <>
+      <Box sx={styles.section}>
+        <Container maxWidth="lg">
+          <Box sx={styles.layout}>
+            <Box sx={styles.leftContent}>
+              <Box
+                component="img"
+                src={mainContent.logo}
+                alt="Gerb's Electrical Trading and Services company logo"
+                loading="lazy"
+                decoding="async"
+                sx={styles.logo}
+              />
 
-            <Box sx={styles.titleWrapper}>
-              <Typography component="p" variant="overline" color="secondary">
-                Government Compliant Contractor
-              </Typography>
+              <Box sx={styles.titleWrapper}>
+                <Typography component="p" variant="overline" color="secondary">
+                  Government Compliant Contractor
+                </Typography>
 
-              <Typography
-                component="h2"
-                variant="h2"
-                color="primary"
-                sx={{ mt: 1 }}
-              >
-                Permits and Licenses
+                <Typography
+                  component="h2"
+                  variant="h2"
+                  color="primary"
+                  sx={{ mt: 1 }}
+                >
+                  Permits and Licenses
+                </Typography>
+              </Box>
+
+              <Typography component="p" variant="body1" sx={styles.description}>
+                {mainContent.text}
               </Typography>
             </Box>
 
-            <Typography component="p" variant="body1" sx={styles.description}>
-              {mainContent.text}
-            </Typography>
+            <Box
+              component="ul"
+              sx={styles.cardsGrid}
+              aria-label="Company permits and licenses"
+            >
+              {permitsAndLicenses.map((permit) => (
+                <Card component="li" key={permit.id} sx={styles.card}>
+                  <CardContent sx={styles.cardContent}>
+                    <Box
+                      component="img"
+                      src={permit.logo}
+                      alt={permit.alt}
+                      loading="lazy"
+                      decoding="async"
+                      sx={styles.permitLogo}
+                    />
+
+                    <Typography
+                      component="h3"
+                      variant="h6"
+                      sx={styles.permitTitle}
+                    >
+                      {permit.title}
+                    </Typography>
+
+                    <Stack spacing={0.5}>
+                      {permit.text.map((item) => (
+                        <Typography
+                          key={item}
+                          component="p"
+                          variant="body2"
+                          sx={styles.permitText}
+                        >
+                          {item}
+                        </Typography>
+                      ))}
+                    </Stack>
+                  </CardContent>
+                </Card>
+              ))}
+            </Box>
           </Box>
 
-          <Box
-            component="ul"
-            sx={styles.cardsGrid}
-            aria-label="Company permits and licenses"
+          <Typography component="p" variant="body2" sx={styles.profileText}>
+            For more information about our permits and licenses, you can view
+            our Company Profile{" "}
+            <Link
+              component="button"
+              type="button"
+              onClick={() => setIsProfileOpen(true)}
+              sx={styles.profileLink}
+            >
+              here
+            </Link>
+            .
+          </Typography>
+        </Container>
+      </Box>
+
+      <Dialog
+        open={isProfileOpen}
+        onClose={() => setIsProfileOpen(false)}
+        fullWidth
+        maxWidth="lg"
+      >
+        <DialogTitle sx={styles.dialogTitle}>
+          Company Profile
+          <IconButton
+            aria-label="Close company profile preview"
+            onClick={() => setIsProfileOpen(false)}
+            sx={styles.closeButton}
           >
-            {permitsAndLicenses.map((permit) => (
-              <Card component="li" key={permit.id} sx={styles.card}>
-                <CardContent sx={styles.cardContent}>
-                  <Box
-                    component="img"
-                    src={permit.logo}
-                    alt={permit.alt}
-                    loading="lazy"
-                    decoding="async"
-                    sx={styles.permitLogo}
-                  />
+            <CloseIcon />
+          </IconButton>
+        </DialogTitle>
 
-                  <Typography
-                    component="h3"
-                    variant="h6"
-                    sx={styles.permitTitle}
-                  >
-                    {permit.title}
-                  </Typography>
-
-                  <Stack spacing={0.5}>
-                    {permit.text.map((item) => (
-                      <Typography
-                        key={item}
-                        component="p"
-                        variant="body2"
-                        sx={styles.permitText}
-                      >
-                        {item}
-                      </Typography>
-                    ))}
-                  </Stack>
-                </CardContent>
-              </Card>
-            ))}
-          </Box>
-        </Box>
-      </Container>
-    </Box>
+        <DialogContent sx={styles.dialogContent}>
+          <Box
+            component="iframe"
+            src={companyProfileUrl}
+            title="Gerb's Electrical Trading and Services Company Profile"
+            sx={styles.pdfPreview}
+          />
+        </DialogContent>
+      </Dialog>
+    </>
   );
 };
 

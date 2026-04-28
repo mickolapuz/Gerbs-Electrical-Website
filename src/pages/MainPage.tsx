@@ -40,12 +40,12 @@ const MainPage = () => {
         <AboutSection />
       </Box>
 
-      <Box component="section" id="projects" sx={styles.section}>
-        <ProjectsSection />
-      </Box>
-
       <Box component="section" id="permits-and-licenses" sx={styles.section}>
         <PermitsLicensesSection />
+      </Box>
+
+      <Box component="section" id="projects" sx={styles.section}>
+        <ProjectsSection />
       </Box>
 
       <Box component="section" id="products" sx={styles.section}>

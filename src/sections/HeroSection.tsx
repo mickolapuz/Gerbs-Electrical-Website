@@ -5,6 +5,10 @@ import Hero2 from "../assets/HeroSection/Hero2.jpg";
 import Hero5 from "../assets/HeroSection/Hero5.jpeg";
 import Hero6 from "../assets/HeroSection/Hero6.jpeg";
 import AppButton from "../components/AppButton";
+import { downloadPublicFile } from "../utils/fileHelper";
+import { scrollToSection } from "../utils/scrollHelper";
+
+const COMPANY_PROFILE_PATH = "/company-profile-2026.pdf";
 
 const commonImage = {
   width: "100%",
@@ -44,6 +48,7 @@ const styles = {
       opacity: 0.07,
     },
   },
+
   tagline: {
     fontSize: { md: "1.8rem" },
     fontWeight: 700,
@@ -52,11 +57,13 @@ const styles = {
     textAlign: "center",
     mt: 1,
   },
+
   overline: {
     color: "text.secondary",
     letterSpacing: 2,
     fontWeight: 600,
   },
+
   buttonsContainer: {
     mt: { xs: 3, md: 5 },
     gap: 1,
@@ -124,12 +131,20 @@ const styles = {
 };
 
 const HeroSection = () => {
+  const handleDownloadCompanyProfile = () => {
+    downloadPublicFile(
+      COMPANY_PROFILE_PATH,
+      "Gerbs Electrical Trading and Services Company Profile 2026.pdf",
+    );
+  };
+
   return (
     <Box sx={styles.container}>
       <Container maxWidth="lg" sx={styles.contentsContainer}>
         <Typography id="hero-title" component="h1" variant="h1" color="primary">
           Gerb&apos;s Electrical Trading and Services
         </Typography>
+
         <Typography
           component="p"
           variant="body1"
@@ -138,24 +153,28 @@ const HeroSection = () => {
         >
           Built on Precision. Powered by Trust.
         </Typography>
+
         <Typography component="p" variant="overline" sx={styles.overline}>
           Design. Construct. Estimate. Supply.
         </Typography>
+
         <Grid container sx={styles.buttonsContainer}>
           <AppButton
             label="Request Quote"
             variant="contained"
             color="primary"
-            onClick={() => console.log("Request Quote")}
+            onClick={() => scrollToSection("contact-us")}
           />
+
           <AppButton
             label="Download Company Profile"
             variant="contained"
             color="secondary"
-            onClick={() => console.log("Download Company Profile")}
+            onClick={handleDownloadCompanyProfile}
           />
         </Grid>
       </Container>
+
       <Container sx={styles.picturesContainer}>
         <Box sx={styles.imageGrid}>
           <Box

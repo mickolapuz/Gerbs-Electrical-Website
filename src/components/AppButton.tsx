@@ -1,46 +1,29 @@
-import { Button } from "@mui/material";
+import { Button, type ButtonProps } from "@mui/material";
 
-interface AppButtonProps {
+interface AppButtonProps extends Omit<ButtonProps, "children"> {
   label: string;
-  variant: "text" | "contained" | "outlined";
-  disabled?: boolean;
-  onClick: () => void;
-  size?: "small" | "medium" | "large";
-  startIcon?: React.ReactNode;
-  endIcon?: React.ReactNode;
-  loading?: boolean;
-  color: string;
 }
 
-const AppButton = (props: AppButtonProps) => {
-  const {
-    label,
-    variant,
-    disabled = false,
-    onClick,
-    size = "medium",
-    startIcon = null,
-    endIcon = null,
-    loading,
-    color,
-  } = props;
-
+const AppButton = ({
+  label,
+  variant = "contained",
+  color = "primary",
+  size = "medium",
+  disabled = false,
+  disableElevation = true,
+  ...props
+}: AppButtonProps) => {
   return (
-    <>
-      <Button
-        variant={variant}
-        disabled={disabled}
-        disableElevation
-        onClick={onClick}
-        size={size}
-        startIcon={startIcon}
-        endIcon={endIcon}
-        loading={loading}
-        color={color}
-      >
-        {label}
-      </Button>
-    </>
+    <Button
+      variant={variant}
+      color={color}
+      size={size}
+      disabled={disabled}
+      disableElevation={disableElevation}
+      {...props}
+    >
+      {label}
+    </Button>
   );
 };
 

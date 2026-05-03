@@ -19,6 +19,7 @@ const commonImage = {
 
 const styles = {
   container: {
+    mt: { lg: "-50px" },
     width: "100%",
     textAlign: "center",
     height: "100vh",

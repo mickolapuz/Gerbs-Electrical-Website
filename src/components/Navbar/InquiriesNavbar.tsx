@@ -30,25 +30,27 @@ const styles = {
     width: "100%",
     backgroundColor: "primary.main",
     color: "common.white",
-    py: { xs: 1.5, md: 1 },
+    py: { xs: 1.25, lg: 1 },
   },
   container: {
     display: "flex",
-    justifyContent: { xs: "center", md: "space-between" },
+    justifyContent: { xs: "center", lg: "space-between" },
     alignItems: "center",
-    gap: { xs: 2, md: 4 },
-    flexDirection: { xs: "column", md: "row" },
-    textAlign: { xs: "center", md: "left" },
+    gap: { xs: 1.5, lg: 4 },
+    flexDirection: { xs: "column", lg: "row" },
+    textAlign: { xs: "center", lg: "left" },
   },
   group: {
     display: "flex",
-    alignItems: { xs: "center", md: "baseline" },
-    flexDirection: { xs: "column", md: "row" },
-    gap: { xs: 0.5, md: 1 },
+    alignItems: { xs: "center", lg: "baseline" },
+    justifyContent: "center",
+    flexDirection: { xs: "column", lg: "row" },
+    gap: { xs: 0.5, lg: 1 },
+    width: { xs: "100%", lg: "auto" },
   },
   title: {
     fontWeight: 700,
-    fontSize: { xs: "0.8rem", md: "0.85rem" },
+    fontSize: { xs: "0.78rem", sm: "0.8rem", lg: "0.85rem" },
     lineHeight: 1.4,
     whiteSpace: "nowrap",
     fontStyle: "normal",
@@ -58,19 +60,26 @@ const styles = {
     p: 0,
     display: "flex",
     alignItems: "center",
-    flexDirection: { xs: "column", md: "row" },
-    gap: { xs: 0.35, md: 1.5 },
+    justifyContent: "center",
+    flexDirection: { xs: "column", sm: "row" },
+    flexWrap: "wrap",
+    gap: { xs: 0.35, sm: 1.25, lg: 1.5 },
   },
   listItem: {
     listStyle: "none",
+    display: "flex",
+    alignItems: "center",
+    gap: 1.25,
   },
   link: {
     color: "rgba(255,255,255,0.9)",
-    fontSize: { xs: "0.78rem", md: "0.82rem" },
+    fontSize: { xs: "0.76rem", sm: "0.78rem", lg: "0.82rem" },
     lineHeight: 1.4,
     textDecoration: "none",
     transition: "color 0.2s ease",
     fontStyle: "normal",
+    whiteSpace: { xs: "normal", sm: "nowrap" },
+    overflowWrap: "anywhere",
     "&:hover": {
       color: "common.white",
       textDecoration: "underline",
@@ -84,9 +93,9 @@ const styles = {
   },
   separator: {
     color: "rgba(255,255,255,0.55)",
-    fontSize: { xs: "0.75rem", md: "0.82rem" },
+    fontSize: { xs: "0.75rem", lg: "0.82rem" },
     lineHeight: 1,
-    display: { xs: "none", md: "inline-flex" },
+    display: { xs: "none", sm: "inline-flex" },
   },
 };
 
@@ -131,16 +140,7 @@ const InquiriesNavbar = () => {
 
             <Stack component="ul" sx={styles.list}>
               {item.children.map((child, index) => (
-                <Box
-                  key={child}
-                  component="li"
-                  sx={{
-                    ...styles.listItem,
-                    display: "flex",
-                    alignItems: "center",
-                    gap: 1.5,
-                  }}
-                >
+                <Box key={child} component="li" sx={styles.listItem}>
                   <Link
                     href={getHref(item.type, child)}
                     aria-label={getAriaLabel(item.type, child)}

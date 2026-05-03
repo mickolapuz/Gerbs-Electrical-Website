@@ -203,25 +203,29 @@ const AppDrawer = ({ open, navItems, onClose }: AppDrawerProps) => {
         },
       }}
     >
-      <Box sx={styles.content}>
+      <Box
+        sx={styles.content}
+        role="navigation"
+        aria-label="Mobile site navigation"
+      >
         <Box sx={styles.header}>
           <Link
             href="/#hero"
-            aria-label="Gerbs Electrical Trading and Services homepage"
+            aria-label="Go to Gerbs Electrical Trading and Services homepage"
             onClick={handleCloseDrawer}
             sx={styles.logoLink}
           >
             <Box
               component="img"
               src={GerbsLogoWithTypography}
-              alt="Gerbs Electrical Trading and Services"
+              alt="Gerbs Electrical Trading and Services logo"
               sx={styles.logo}
             />
           </Link>
 
           <IconButton
             type="button"
-            aria-label="Close main menu"
+            aria-label="Close mobile navigation menu"
             onClick={handleCloseDrawer}
             sx={styles.closeButton}
           >
@@ -231,7 +235,7 @@ const AppDrawer = ({ open, navItems, onClose }: AppDrawerProps) => {
 
         <Box
           component="nav"
-          aria-label="Mobile navigation"
+          aria-label="Main mobile navigation"
           sx={styles.navWrapper}
         >
           <Stack component="ul" sx={styles.navList}>
@@ -241,6 +245,7 @@ const AppDrawer = ({ open, navItems, onClose }: AppDrawerProps) => {
 
               const isLastItem = index === navItems.length - 1;
               const isExpanded = expandedNavItemIds.includes(navItem.id);
+              const submenuId = `mobile-submenu-${navItem.id}`;
 
               return (
                 <Box component="li" key={navItem.id} sx={styles.navItem}>
@@ -262,10 +267,12 @@ const AppDrawer = ({ open, navItems, onClose }: AppDrawerProps) => {
                             : `Expand ${navItem.item} submenu`
                         }
                         aria-expanded={isExpanded}
+                        aria-controls={submenuId}
                         onClick={() => handleToggleChildren(navItem.id)}
                         sx={styles.expandButton}
                       >
                         <KeyboardArrowDownIcon
+                          aria-hidden="true"
                           sx={{
                             ...styles.downIcon,
                             transform: isExpanded
@@ -278,8 +285,13 @@ const AppDrawer = ({ open, navItems, onClose }: AppDrawerProps) => {
                   </Box>
 
                   {hasChildren && (
-                    <Collapse in={isExpanded} timeout="auto" unmountOnExit>
-                      <Stack component="ul" sx={styles.childrenList}>
+                    <Collapse in={isExpanded} timeout="auto">
+                      <Stack
+                        id={submenuId}
+                        component="ul"
+                        aria-label={`${navItem.item} submenu`}
+                        sx={styles.childrenList}
+                      >
                         {navItem.children?.map((child) => (
                           <Box
                             component="li"

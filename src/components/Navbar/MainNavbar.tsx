@@ -116,18 +116,6 @@ const navItems: NavItems[] = [
     id: 6,
     item: "Services",
     href: "/#services",
-    children: [
-      {
-        id: 1,
-        item: "Service A",
-        href: "",
-      },
-      {
-        id: 2,
-        item: "Service B",
-        href: "",
-      },
-    ],
   },
 ];
 

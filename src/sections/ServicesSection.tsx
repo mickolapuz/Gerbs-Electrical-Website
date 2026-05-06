@@ -1,13 +1,12 @@
-import { Box } from "@mui/material";
+import { Box, type Theme } from "@mui/material";
 
 const styles = {
-  container: {
+  container: (theme: Theme) => ({
     width: "100%",
     minHeight: "50vh",
-    background:
-      "linear-gradient(135deg, #F9FAFB 0%, #EEF3FB 45%, #FFFFFF 100%)",
     overflow: "hidden",
-  },
+    backgroundColor: theme.palette.primary.main,
+  }),
 };
 
 const ServicesSection = () => {

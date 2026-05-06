@@ -14,6 +14,11 @@ interface MissionVision {
   text: string[];
 }
 
+interface Description {
+  id: number;
+  text: string;
+}
+
 const styles = {
   container: (theme: Theme) => ({
     mt: { xs: 7 },
@@ -37,11 +42,26 @@ const styles = {
     maxWidth: "700px",
     mx: "auto",
   },
+
   overline: {
     mt: 1,
     fontWeight: 600,
     opacity: 0.95,
     fontSize: { xs: "1.15rem", md: "1.6rem" },
+  },
+
+  descriptionContainer: {
+    mt: 3,
+    maxWidth: "900px",
+    mx: "auto",
+    px: { xs: 1, sm: 2 },
+  },
+
+  descriptionText: {
+    color: "rgba(255,255,255,0.82)",
+    fontSize: { xs: "0.95rem", sm: "1rem", md: "1.05rem" },
+    lineHeight: 1.9,
+    mb: 2,
   },
 
   logo: {
@@ -52,29 +72,36 @@ const styles = {
     display: "block",
     mx: "auto",
   },
+
   metricsGrid: {
     display: "flex",
-    justifyContent: "center",
   },
+
   metricsBox: {
     width: "100%",
+    minHeight: { xs: 118, sm: 125, md: 132 },
     textAlign: "center",
-    px: 2,
-    py: 3,
+    px: { xs: 1.5, sm: 2 },
+    py: { xs: 2.5, sm: 3 },
     borderRadius: 3,
     backgroundColor: "rgba(255,255,255,0.06)",
     border: "1px solid rgba(255,255,255,0.12)",
     backdropFilter: "blur(8px)",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
   },
+
   metricsValue: {
-    fontSize: { xs: "1.7rem", sm: "2rem", md: "2.3rem" },
+    fontSize: { xs: "1.65rem", sm: "2rem", md: "2.3rem" },
     fontWeight: 800,
     lineHeight: 1,
     color: "common.white",
   },
+
   metricsLabel: {
     mt: 1,
-    fontSize: { xs: "0.8rem", sm: "0.95rem" },
+    fontSize: { xs: "0.78rem", sm: "0.95rem" },
     lineHeight: 1.35,
     color: "rgba(255,255,255,0.78)",
     fontWeight: 500,
@@ -90,15 +117,18 @@ const styles = {
     border: "1px solid rgba(255,255,255,0.12)",
     backdropFilter: "blur(8px)",
   },
+
   missionVisionTitle: {
     fontWeight: 700,
     mb: 2,
   },
+
   missionVisionTextbox: {
     m: 0,
     pl: 2.5,
     color: "rgba(255,255,255,0.78)",
   },
+
   missionVisionText: {
     mb: 1,
     fontSize: { xs: "0.9rem", md: "1rem" },
@@ -110,21 +140,21 @@ const metrics: Metric[] = [
   {
     id: 1,
     value: "20+",
-    label: "Years in the Industry",
+    label: "Years of Experience",
   },
   {
     id: 2,
-    value: "50+",
-    label: "Completed Projects",
+    value: "200+",
+    label: "Total Projects Completed",
   },
   {
     id: 3,
-    value: "100+",
-    label: "Products Supplied",
+    value: "₱250M",
+    label: "Project Value Delivered",
   },
   {
     id: 4,
-    value: "10+",
+    value: "50+",
     label: "Clients Served",
   },
 ];
@@ -134,19 +164,29 @@ const missionVision: MissionVision[] = [
     id: 1,
     title: "Mission",
     text: [
-      "Deliver reliable and high-quality electrical products and services for every client need.",
-      "Provide safe, efficient, and cost-effective solutions through skilled workmanship and integrity.",
-      "Build long-term relationships through trust, professionalism, and consistent customer support.",
+      "We specialize in electrical construction, general building, and engineering works, committed to delivering high-quality results that meet national and international standards.",
+      "We value the expertise and experience of our workforce, leveraging their strengths to fulfill our responsibilities to clients and society. Through innovation and openness to better solutions, we continuously strive for excellence in every project.",
     ],
   },
   {
     id: 2,
     title: "Vision",
     text: [
-      "To be a trusted leader in electrical trading and services recognized for excellence and innovation.",
-      "To expand our reach while maintaining the highest standards of safety, quality, and service.",
-      "To power homes, businesses, and industries with dependable solutions that create lasting value.",
+      "Our vision is to be a leading force in the construction industry, delivering high-quality, reliable results that exceed client expectations.",
+      "Our services reflect the standards we uphold and our commitment to supporting the Philippines’ growing industries—contributing to the nation’s progress and future as a leading economy in Asia.",
+      "Guided by respect, leadership, integrity, and discipline, we strive to create efficient, meaningful, and rewarding partnerships—grounded in trust and driven by excellence, all for the Glory of God.",
     ],
+  },
+];
+
+const description: Description[] = [
+  {
+    id: 1,
+    text: "Gerb’s Electrical Trading and Services was organized on 18th of June 2002, solely owned and managed by Engineer Robelito P. Gerbise, therefore a 100% Filipino company. It has earned a good reputation in the electrical construction industry for strict adherence to professional, technical, and ethical standards.",
+  },
+  {
+    id: 2,
+    text: "Our company is engaged in commercial, industrial, and residential electrical works including its design and consultation.",
   },
 ];
 
@@ -166,6 +206,14 @@ const AboutSection = () => {
         >
           Built on Experience. Driven by Results.
         </Typography>
+
+        <Box component="section" sx={styles.descriptionContainer}>
+          {description.map((item) => (
+            <Typography key={item.id} component="p" sx={styles.descriptionText}>
+              {item.text}
+            </Typography>
+          ))}
+        </Box>
 
         <Grid container spacing={3} sx={{ mt: 5 }}>
           {metrics.map((metric) => (
@@ -190,7 +238,7 @@ const AboutSection = () => {
           <Box
             component="img"
             src={GerbsIcon}
-            alt="Gerbs Electrical Trading and Services"
+            alt="Gerbs Electrical Trading and Services company logo"
             sx={styles.logo}
             loading="lazy"
           />

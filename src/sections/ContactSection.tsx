@@ -21,7 +21,7 @@ import { sendEmailForm } from "../utils/emailHelper";
 const styles = {
   container: {
     width: "100%",
-    minHeight: "100vh",
+    minHeight: "50vh",
     background:
       "linear-gradient(135deg, #F9FAFB 0%, #EEF3FB 45%, #FFFFFF 100%)",
     overflow: "hidden",

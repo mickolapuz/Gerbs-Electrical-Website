@@ -46,32 +46,17 @@ const navItems: NavItems[] = [
       {
         id: 1,
         item: "Industrial",
-        href: "/projects/industrial",
+        href: "/projects#industrial",
       },
       {
         id: 2,
-        item: "Education",
-        href: "/projects/education",
+        item: "Commercial / Education / Healthcare",
+        href: "/projects#commercial-education-healthcare",
       },
       {
         id: 3,
-        item: "Healthcare",
-        href: "/projects/healthcare",
-      },
-      {
-        id: 4,
-        item: "Commercial",
-        href: "/projects/commercial",
-      },
-      {
-        id: 5,
-        item: "Government",
-        href: "/projects/government",
-      },
-      {
-        id: 6,
         item: "Residential",
-        href: "/projects/residential",
+        href: "/projects#residential",
       },
     ],
   },
@@ -96,6 +81,11 @@ const navItems: NavItems[] = [
     id: 6,
     item: "Services",
     href: "/#services",
+  },
+  {
+    id: 7,
+    item: "Design",
+    href: "/#design",
   },
 ];
 

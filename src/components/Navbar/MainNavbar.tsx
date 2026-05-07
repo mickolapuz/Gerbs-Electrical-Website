@@ -82,33 +82,13 @@ const navItems: NavItems[] = [
     children: [
       {
         id: 1,
-        item: "Construction Materials",
-        href: "/products/construction-materials",
-      },
-      {
-        id: 2,
-        item: "Lightning Protection Equipment",
-        href: "/products/lightning-protection-equipment",
-      },
-      {
-        id: 3,
         item: "Safety and Security",
         href: "/products/safety-and-security",
       },
       {
-        id: 4,
-        item: "Aerial Work Platform",
-        href: "/products/aerial-work-platform",
-      },
-      {
-        id: 5,
-        item: "Electrical Equipment",
-        href: "/products/electrical-equipment",
-      },
-      {
-        id: 6,
-        item: "Robotics",
-        href: "/products/robotics",
+        id: 2,
+        item: "Electrical Materials and Equipment",
+        href: "/products/electrical-materials-and-equipment",
       },
     ],
   },

@@ -1,3 +1,5 @@
+import { Link as RouterLink } from "react-router";
+
 import {
   Box,
   ClickAwayListener,
@@ -6,6 +8,8 @@ import {
   Popper,
   Stack,
 } from "@mui/material";
+
+import { scrollToSection } from "../utils/scrollHelper";
 
 interface NavItemChildren {
   id: number;
@@ -74,6 +78,18 @@ const styles = {
   },
 };
 
+const getSectionIdFromHref = (href: string) => {
+  const hashIndex = href.indexOf("#");
+
+  if (hashIndex === -1) return null;
+
+  return href.slice(hashIndex + 1);
+};
+
+const isHomeSectionLink = (href: string) => {
+  return href.startsWith("/#");
+};
+
 const AppNavbarPopper = ({
   open,
   anchorEl,
@@ -82,6 +98,29 @@ const AppNavbarPopper = ({
   onMouseLeave,
   onClose,
 }: AppNavbarPopperProps) => {
+  const handleChildClick = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    if (!isHomeSectionLink(href)) {
+      onClose();
+      return;
+    }
+
+    const sectionId = getSectionIdFromHref(href);
+
+    if (!sectionId) {
+      onClose();
+      return;
+    }
+
+    event.preventDefault();
+
+    window.history.pushState(null, "", href);
+    scrollToSection(sectionId);
+    onClose();
+  };
+
   return (
     <Popper
       open={open}
@@ -108,7 +147,12 @@ const AppNavbarPopper = ({
           <Stack component="ul" sx={styles.list}>
             {childrenItems.map((child) => (
               <Box component="li" key={child.id} sx={styles.item}>
-                <Link href={child.href} sx={styles.link} onClick={onClose}>
+                <Link
+                  component={RouterLink}
+                  to={child.href}
+                  sx={styles.link}
+                  onClick={(event) => handleChildClick(event, child.href)}
+                >
                   {child.item}
                 </Link>
               </Box>

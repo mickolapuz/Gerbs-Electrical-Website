@@ -1,17 +1,14 @@
 import { CssBaseline, ThemeProvider } from "@mui/material";
+import { RouterProvider } from "react-router/dom";
 
 import theme from "./themes/Theme";
-import MainPage from "./pages/MainPage";
-import NavbarWrapper from "./components/Navbar/NavbarWrapper";
-import AppFooter from "./components/AppFooter";
+import router from "./routes/router";
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <NavbarWrapper />
-      <MainPage />
-      <AppFooter />
+      <RouterProvider router={router} />
     </ThemeProvider>
   );
 };

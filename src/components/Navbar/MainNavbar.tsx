@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { Link as RouterLink, useLocation } from "react-router";
 
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -6,6 +7,7 @@ import { Box, Button, Container, IconButton, Link } from "@mui/material";
 
 import GerbsLogoWithTypography from "../../assets/CompanyLogos/Gerb's Colored Icon+Typography.png";
 import GerbsLogoOnly from "../../assets/CompanyLogos/Gerb's Colored Icon.png";
+import { scrollToSection } from "../../utils/scrollHelper";
 import AppDrawer from "../AppDrawer";
 import AppNavbarPopper from "../AppNavbarPopper";
 
@@ -46,17 +48,17 @@ const navItems: NavItems[] = [
       {
         id: 1,
         item: "Industrial",
-        href: "/projects#industrial",
+        href: "/#industrial",
       },
       {
         id: 2,
         item: "Commercial / Education / Healthcare",
-        href: "/projects#commercial-education-healthcare",
+        href: "/#commercial-education-healthcare",
       },
       {
         id: 3,
         item: "Residential",
-        href: "/projects#residential",
+        href: "/#residential",
       },
     ],
   },
@@ -190,7 +192,20 @@ const styles = {
   },
 };
 
+const getSectionIdFromHref = (href: string) => {
+  const hashIndex = href.indexOf("#");
+
+  if (hashIndex === -1) return null;
+
+  return href.slice(hashIndex + 1);
+};
+
+const isHomeSectionLink = (href: string) => {
+  return href.startsWith("/#");
+};
+
 const MainNavbar = () => {
+  const location = useLocation();
   const closeTimerRef = useRef<number | null>(null);
 
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -244,14 +259,40 @@ const MainNavbar = () => {
     }, 140);
   };
 
+  const handleSectionNavigation = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
+    if (!isHomeSectionLink(href)) return;
+
+    const sectionId = getSectionIdFromHref(href);
+
+    if (!sectionId) return;
+
+    const isAlreadyOnHomePage = location.pathname === "/";
+
+    if (!isAlreadyOnHomePage) {
+      handleClosePopper();
+      return;
+    }
+
+    event.preventDefault();
+
+    window.history.pushState(null, "", href);
+    scrollToSection(sectionId);
+    handleClosePopper();
+  };
+
   return (
     <>
       <Box component="header" sx={styles.root}>
         <Container maxWidth="xl" sx={styles.container}>
           <Link
-            href="/#home"
+            component={RouterLink}
+            to="/#home"
             aria-label="Gerbs Electrical Trading and Services homepage"
             sx={styles.logoLink}
+            onClick={(event) => handleSectionNavigation(event, "/#home")}
           >
             <Box
               component="img"
@@ -282,7 +323,14 @@ const MainNavbar = () => {
                   }
                   onMouseLeave={handleDelayedClosePopper}
                 >
-                  <Link href={navItem.href} sx={styles.navLink}>
+                  <Link
+                    component={RouterLink}
+                    to={navItem.href}
+                    sx={styles.navLink}
+                    onClick={(event) =>
+                      handleSectionNavigation(event, navItem.href)
+                    }
+                  >
                     {navItem.item}
 
                     {hasChildren && (
@@ -299,10 +347,14 @@ const MainNavbar = () => {
 
           <Box sx={styles.mobileCtaWrapper}>
             <Button
-              href="/#contact-us"
+              component={RouterLink}
+              to="/#contact-us"
               variant="contained"
               color="primary"
               sx={styles.contactButton}
+              onClick={(event) =>
+                handleSectionNavigation(event, "/#contact-us")
+              }
             >
               Contact Us
             </Button>
@@ -310,10 +362,14 @@ const MainNavbar = () => {
 
           <Box sx={styles.desktopActions}>
             <Button
-              href="/#contact-us"
+              component={RouterLink}
+              to="/#contact-us"
               variant="contained"
               color="primary"
               sx={styles.contactButton}
+              onClick={(event) =>
+                handleSectionNavigation(event, "/#contact-us")
+              }
             >
               Contact Us
             </Button>

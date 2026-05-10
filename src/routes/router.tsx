@@ -23,7 +23,7 @@ const router = createBrowserRouter([
         path: "products/electrical-materials-and-equipment",
         lazy: async () => {
           const module =
-            await import("../pages/Brands/ElectricalMaterialsAndEquipmentPage");
+            await import("../pages/ElectricalMaterialsAndEquipmentPage");
           return { Component: module.default };
         },
       },

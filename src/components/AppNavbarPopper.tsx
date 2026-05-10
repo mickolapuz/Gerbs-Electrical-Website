@@ -1,4 +1,4 @@
-import { Link as RouterLink } from "react-router";
+import { Link as RouterLink, useLocation } from "react-router";
 
 import {
   Box,
@@ -98,6 +98,8 @@ const AppNavbarPopper = ({
   onMouseLeave,
   onClose,
 }: AppNavbarPopperProps) => {
+  const location = useLocation();
+
   const handleChildClick = (
     event: React.MouseEvent<HTMLAnchorElement>,
     href: string,
@@ -110,6 +112,13 @@ const AppNavbarPopper = ({
     const sectionId = getSectionIdFromHref(href);
 
     if (!sectionId) {
+      onClose();
+      return;
+    }
+
+    const isCurrentlyOnHomePage = location.pathname === "/";
+
+    if (!isCurrentlyOnHomePage) {
       onClose();
       return;
     }

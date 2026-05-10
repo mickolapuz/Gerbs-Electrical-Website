@@ -118,7 +118,12 @@ const styles = {
 
   card: (theme: Theme) => ({
     height: "100%",
+    minHeight: {
+      md: 440,
+    },
     position: "relative",
+    display: "flex",
+    flexDirection: "column",
     borderRadius: "18px",
     backgroundColor: "background.paper",
     border: "1px solid",
@@ -185,7 +190,8 @@ const styles = {
   },
 
   action: {
-    mt: 3,
+    mt: "auto",
+    pt: 3,
   },
 
   button: {

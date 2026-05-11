@@ -15,7 +15,7 @@ const router = createBrowserRouter([
       {
         path: "products/safety-and-security",
         lazy: async () => {
-          const module = await import("../pages/Brands/SafetyAndSecurityPage");
+          const module = await import("../pages/SafetyAndSecurityPage");
           return { Component: module.default };
         },
       },

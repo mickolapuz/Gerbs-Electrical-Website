@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link as RouterLink, useLocation } from "react-router";
 
 import {
@@ -99,6 +100,25 @@ const AppNavbarPopper = ({
   onClose,
 }: AppNavbarPopperProps) => {
   const location = useLocation();
+
+  useEffect(() => {
+    if (!open) return;
+
+    const handleScroll = () => {
+      onClose();
+    };
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+      capture: true,
+    });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll, {
+        capture: true,
+      });
+    };
+  }, [open, onClose]);
 
   const handleChildClick = (
     event: React.MouseEvent<HTMLAnchorElement>,

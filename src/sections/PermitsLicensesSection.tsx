@@ -33,8 +33,7 @@ interface PermitAndLicense {
   text: string[];
 }
 
-const companyProfileUrl =
-  "/GERB'S ELECTRICAL TRADING & SERVICES COMPANY PROFILE 2026.pdf#page=28";
+const companyProfileUrl = "/company-profile-2026.pdf#page=28";
 
 const mainContent: MainContent = {
   logo: GerbsLogo,

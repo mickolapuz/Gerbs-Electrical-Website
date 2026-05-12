@@ -3,7 +3,15 @@ import { Link as RouterLink } from "react-router";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import BusinessRoundedIcon from "@mui/icons-material/BusinessRounded";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
-import { Box, Button, Container, Typography, type Theme } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Typography,
+  type SxProps,
+  type Theme,
+} from "@mui/material";
+import type { SystemStyleObject } from "@mui/system";
 
 import type { BrandsPageModel } from "./BrandsModel";
 
@@ -18,9 +26,9 @@ const styles = {
     background:
       "linear-gradient(135deg, #F9FAFB 0%, #EEF3FB 42%, #FFFFFF 100%)",
     overflow: "hidden",
-  },
+  } satisfies SxProps<Theme>,
 
-  hero: (theme: Theme) => ({
+  hero: (theme: Theme): SystemStyleObject<Theme> => ({
     position: "relative",
     py: { xs: 8, md: 12 },
     borderBottom: "1px solid rgba(34,52,110,0.10)",
@@ -64,7 +72,7 @@ const styles = {
     maxWidth: 860,
     mx: "auto",
     textAlign: "center",
-  },
+  } satisfies SxProps<Theme>,
 
   eyebrow: {
     width: "fit-content",
@@ -79,7 +87,7 @@ const styles = {
     color: "#22346E",
     backgroundColor: "rgba(34,52,110,0.08)",
     border: "1px solid rgba(34,52,110,0.12)",
-  },
+  } satisfies SxProps<Theme>,
 
   heading: {
     mt: 2,
@@ -91,7 +99,7 @@ const styles = {
       sm: "2.75rem",
       md: "3.5rem",
     },
-  },
+  } satisfies SxProps<Theme>,
 
   description: {
     mt: 2.5,
@@ -100,16 +108,16 @@ const styles = {
     color: "text.secondary",
     fontSize: { xs: "1rem", md: "1.08rem" },
     lineHeight: 1.8,
-  },
+  } satisfies SxProps<Theme>,
 
   contentSection: {
     py: { xs: 6, md: 9 },
-  },
+  } satisfies SxProps<Theme>,
 
   brandsList: {
     display: "flex",
     flexDirection: "column",
-  },
+  } satisfies SxProps<Theme>,
 
   brandItem: {
     position: "relative",
@@ -127,13 +135,13 @@ const styles = {
       borderTop: "none",
       pt: 0,
     },
-  },
+  } satisfies SxProps<Theme>,
 
   brandLogoWrapper: {
     display: "flex",
     alignItems: "center",
     gap: 1.5,
-  },
+  } satisfies SxProps<Theme>,
 
   logoBox: {
     width: { xs: 56, md: 72 },
@@ -146,26 +154,26 @@ const styles = {
       "linear-gradient(135deg, rgba(34,52,110,0.10), rgba(215,31,54,0.08))",
     border: "1px solid rgba(34,52,110,0.12)",
     overflow: "hidden",
-  },
+  } satisfies SxProps<Theme>,
 
   logoImage: {
     width: "100%",
     height: "100%",
     objectFit: "contain",
     p: 1.25,
-  },
+  } satisfies SxProps<Theme>,
 
   logoIcon: {
     fontSize: { xs: 30, md: 36 },
     color: "#22346E",
-  },
+  } satisfies SxProps<Theme>,
 
   brandNameMobile: {
     display: { xs: "block", md: "none" },
     fontWeight: 800,
     color: "#0F172A",
     lineHeight: 1.2,
-  },
+  } satisfies SxProps<Theme>,
 
   brandNameDesktop: {
     display: { xs: "none", md: "block" },
@@ -173,16 +181,16 @@ const styles = {
     color: "#0F172A",
     lineHeight: 1.2,
     mb: 1.5,
-  },
+  } satisfies SxProps<Theme>,
 
   brandContent: {
     maxWidth: 760,
-  },
+  } satisfies SxProps<Theme>,
 
   brandText: {
     color: "text.secondary",
     lineHeight: 1.8,
-  },
+  } satisfies SxProps<Theme>,
 
   featureList: {
     listStyle: "none",
@@ -191,32 +199,32 @@ const styles = {
     display: "flex",
     flexDirection: "column",
     gap: 2,
-  },
+  } satisfies SxProps<Theme>,
 
   featureItem: {
     display: "flex",
     gap: 1.25,
     alignItems: "flex-start",
-  },
+  } satisfies SxProps<Theme>,
 
   featureIcon: {
     mt: "3px",
     fontSize: 20,
     color: "#22346E",
     flexShrink: 0,
-  },
+  } satisfies SxProps<Theme>,
 
   featureKey: {
     fontWeight: 800,
     color: "#0F172A",
     lineHeight: 1.35,
-  },
+  } satisfies SxProps<Theme>,
 
   featureValue: {
     mt: 0.5,
     color: "text.secondary",
     lineHeight: 1.75,
-  },
+  } satisfies SxProps<Theme>,
 
   brandAction: {
     display: "flex",
@@ -228,7 +236,7 @@ const styles = {
       xs: "flex-start",
       md: "center",
     },
-  },
+  } satisfies SxProps<Theme>,
 
   button: {
     width: { xs: "100%", sm: "fit-content" },
@@ -246,11 +254,11 @@ const styles = {
       backgroundColor: "#1B2A59",
       boxShadow: "0 14px 30px rgba(34,52,110,0.24)",
     },
-  },
+  } satisfies SxProps<Theme>,
 
   ctaSection: {
     pb: { xs: 7, md: 10 },
-  },
+  } satisfies SxProps<Theme>,
 
   ctaBox: {
     borderRadius: "22px",
@@ -260,7 +268,7 @@ const styles = {
       "linear-gradient(135deg, rgba(34,52,110,0.96), rgba(34,52,110,0.88))",
     color: "#FFFFFF",
     boxShadow: "0 22px 60px rgba(15,23,42,0.18)",
-  },
+  } satisfies SxProps<Theme>,
 
   ctaContent: {
     display: "flex",
@@ -268,20 +276,20 @@ const styles = {
     alignItems: { xs: "flex-start", md: "center" },
     justifyContent: "space-between",
     gap: 3,
-  },
+  } satisfies SxProps<Theme>,
 
   ctaTitle: {
     fontWeight: 800,
     lineHeight: 1.2,
     fontSize: { xs: "1.55rem", md: "2rem" },
-  },
+  } satisfies SxProps<Theme>,
 
   ctaDescription: {
     mt: 1,
     maxWidth: 720,
     color: "rgba(255,255,255,0.78)",
     lineHeight: 1.75,
-  },
+  } satisfies SxProps<Theme>,
 
   ctaButton: {
     width: { xs: "100%", sm: "fit-content" },
@@ -297,7 +305,7 @@ const styles = {
     "&:hover": {
       backgroundColor: "#F8FAFC",
     },
-  },
+  } satisfies SxProps<Theme>,
 };
 
 const BrandsPage = ({ content }: BrandsPageProps) => {

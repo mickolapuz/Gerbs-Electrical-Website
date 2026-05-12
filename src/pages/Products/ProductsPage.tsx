@@ -3,6 +3,7 @@ import { Link as RouterLink } from "react-router";
 import ArrowForwardRoundedIcon from "@mui/icons-material/ArrowForwardRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import { Box, Button, Container, Typography, type Theme } from "@mui/material";
+import type { SystemStyleObject } from "@mui/system";
 
 import type { ProductItem, ProductsPageModel } from "./ProductsModel";
 
@@ -19,7 +20,7 @@ const styles = {
     overflow: "hidden",
   },
 
-  hero: (theme: Theme) => ({
+  hero: (theme: Theme): SystemStyleObject<Theme> => ({
     position: "relative",
     py: { xs: 6, md: 9 },
     borderBottom: "1px solid rgba(34,52,110,0.10)",

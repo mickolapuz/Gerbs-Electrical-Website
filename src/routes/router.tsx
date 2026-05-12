@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router";
 
+import IntroSplash from "../components/AppIntroSplash";
 import MainLayout from "../layouts/MainLayout";
 import MainPage from "../pages/MainPage";
 import NotFoundPage from "../pages/NotFoundPage";
@@ -11,7 +12,11 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        Component: MainPage,
+        element: (
+          <IntroSplash>
+            <MainPage />
+          </IntroSplash>
+        ),
       },
       {
         path: "products/safety-and-security",

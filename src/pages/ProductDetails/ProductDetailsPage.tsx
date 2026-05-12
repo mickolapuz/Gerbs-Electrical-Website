@@ -3,6 +3,7 @@ import { Link as RouterLink, useLocation, useParams } from "react-router";
 import CheckCircleRoundedIcon from "@mui/icons-material/CheckCircleRounded";
 import ChevronRightRoundedIcon from "@mui/icons-material/ChevronRightRounded";
 import { Box, Button, Container, Typography, type Theme } from "@mui/material";
+import type { SystemStyleObject } from "@mui/system";
 
 import NotFoundPage from "../NotFoundPage";
 import type { ProductDetailsModel } from "./ProductDetailsModel";
@@ -71,7 +72,7 @@ const styles = {
     overflow: "hidden",
   },
 
-  hero: (theme: Theme) => ({
+  hero: (theme: Theme): SystemStyleObject<Theme> => ({
     position: "relative",
     py: { xs: 3.5, md: 5 },
     overflow: "hidden",

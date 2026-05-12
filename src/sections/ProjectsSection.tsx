@@ -13,6 +13,130 @@ import SiteDevelopment from "../assets/Projects/SiteDevelopment.png";
 import SupplyOfFurniture from "../assets/Projects/SupplyOfFurniture.png";
 import SupplyOfMaterials from "../assets/Projects/SupplyOfMaterials.png";
 
+interface FeaturedProject {
+  id: number;
+  picture: string;
+  title: string;
+}
+
+interface ProjectCategory {
+  id: number;
+  slug: string;
+  heading: string;
+  description: string[];
+  scrollMarginTop: {
+    xs: string;
+    md: string;
+  };
+  featuredProjects: FeaturedProject[];
+}
+
+const projectCategories: ProjectCategory[] = [
+  {
+    id: 1,
+    slug: "industrial",
+    heading: "Industrial Works",
+    scrollMarginTop: {
+      xs: "90px",
+      md: "115px",
+    },
+    description: [
+      "Our industrial portfolio reflects extensive experience in delivering reliable, high-performance solutions for a wide range of facilities. We have successfully completed numerous projects involving power distribution systems, electrical installations, equipment integration, and infrastructure works tailored to demanding industrial environments.",
+      "With a strong focus on safety, efficiency, and compliance with industry standards, we ensure that every project is executed with precision and built to support continuous, heavy-duty operations. Our expertise allows us to adapt to complex requirements and provide dependable solutions that keep industrial operations running smoothly.",
+    ],
+    featuredProjects: [
+      {
+        id: 1,
+        picture: ElectricalWorks,
+        title: "Electrical Works",
+      },
+      {
+        id: 2,
+        picture: PowerHouse,
+        title: "Power House",
+      },
+      {
+        id: 3,
+        picture: FireProtectionWorks,
+        title: "Fire Protection Works",
+      },
+      {
+        id: 4,
+        picture: CivilWorks,
+        title: "Civil Works",
+      },
+      {
+        id: 5,
+        picture: ElectricalEquipment,
+        title: "Electrical Equipment",
+      },
+      {
+        id: 6,
+        picture: RoofingWorks,
+        title: "Roofing Works",
+      },
+    ],
+  },
+  {
+    id: 2,
+    slug: "commercial-education-healthcare",
+    heading: "Commercial / Education / Healthcare Works",
+    scrollMarginTop: {
+      xs: "90px",
+      md: "115px",
+    },
+    description: [
+      "We deliver reliable construction and engineering solutions for commercial establishments, educational institutions, and healthcare facilities. Our projects are designed to meet operational demands, safety standards, and long-term functionality while ensuring efficient and high-quality execution.",
+    ],
+    featuredProjects: [
+      {
+        id: 1,
+        picture: SupplyOfMaterials,
+        title: "Supply of Materials",
+      },
+      {
+        id: 2,
+        picture: ElectricalFDASDesign,
+        title: "Electrical, Tel/Data, and FDAS Design",
+      },
+      {
+        id: 3,
+        picture: SiteDevelopment,
+        title: "Electrical, Auxiliary, STP, Site Development, and CATV Works",
+      },
+      {
+        id: 4,
+        picture: ElectricalMechanicalCivilWorks,
+        title: "Electrical, Mechanical, and Civil Works",
+      },
+      {
+        id: 5,
+        picture: SupplyOfFurniture,
+        title: "Supply of Furniture",
+      },
+    ],
+  },
+  {
+    id: 3,
+    slug: "residential",
+    heading: "Residential Works",
+    scrollMarginTop: {
+      xs: "90px",
+      md: "115px",
+    },
+    description: [
+      "We provide quality construction and engineering services for residential developments, creating safe, functional, and comfortable living spaces. From new homes to renovations and upgrades, we deliver practical and well-executed solutions tailored to our clients’ needs.",
+    ],
+    featuredProjects: [
+      {
+        id: 1,
+        picture: GeneralConstructionWorks,
+        title: "General Construction Works",
+      },
+    ],
+  },
+];
+
 const styles = {
   section: {
     width: "100%",
@@ -53,13 +177,14 @@ const styles = {
     lineHeight: 1.8,
   },
 
-  categoryCard: {
+  categoryCard: (scrollMarginTop: { xs: string; md: string }) => ({
+    scrollMarginTop,
     p: { xs: 2.5, md: 4 },
     borderRadius: "20px",
     backgroundColor: "#FFFFFF",
     border: "1px solid rgba(34,52,110,0.10)",
     boxShadow: "0 8px 24px rgba(15,23,42,0.05)",
-  },
+  }),
 
   categoryHeader: {
     display: "grid",
@@ -148,119 +273,10 @@ const styles = {
   },
 };
 
-interface FeaturedProject {
-  id: number;
-  picture: string;
-  title: string;
-}
-
-interface ProjectCategory {
-  id: number;
-  slug: string;
-  heading: string;
-  description: string[];
-  featuredProjects: FeaturedProject[];
-}
-
-const projectCategories: ProjectCategory[] = [
-  {
-    id: 1,
-    slug: "industrial",
-    heading: "Industrial Works",
-    description: [
-      "Our industrial portfolio reflects extensive experience in delivering reliable, high-performance solutions for a wide range of facilities. We have successfully completed numerous projects involving power distribution systems, electrical installations, equipment integration, and infrastructure works tailored to demanding industrial environments.",
-      "With a strong focus on safety, efficiency, and compliance with industry standards, we ensure that every project is executed with precision and built to support continuous, heavy-duty operations. Our expertise allows us to adapt to complex requirements and provide dependable solutions that keep industrial operations running smoothly.",
-    ],
-    featuredProjects: [
-      {
-        id: 1,
-        picture: ElectricalWorks,
-        title: "Electrical Works",
-      },
-      {
-        id: 2,
-        picture: PowerHouse,
-        title: "Power House",
-      },
-      {
-        id: 3,
-        picture: FireProtectionWorks,
-        title: "Fire Protection Works",
-      },
-      {
-        id: 4,
-        picture: CivilWorks,
-        title: "Civil Works",
-      },
-      {
-        id: 5,
-        picture: ElectricalEquipment,
-        title: "Electrical Equipment",
-      },
-      {
-        id: 6,
-        picture: RoofingWorks,
-        title: "Roofing Works",
-      },
-    ],
-  },
-  {
-    id: 2,
-    slug: "commercial-education-healthcare",
-    heading: "Commercial / Education / Healthcare Works",
-    description: [
-      "We deliver reliable construction and engineering solutions for commercial establishments, educational institutions, and healthcare facilities. Our projects are designed to meet operational demands, safety standards, and long-term functionality while ensuring efficient and high-quality execution.",
-    ],
-    featuredProjects: [
-      {
-        id: 1,
-        picture: SupplyOfMaterials,
-        title: "Supply of Materials",
-      },
-      {
-        id: 2,
-        picture: ElectricalFDASDesign,
-        title: "Electrical, Tel/Data, and FDAS Design",
-      },
-      {
-        id: 3,
-        picture: SiteDevelopment,
-        title: "Electrical, Auxiliary, STP, Site Development, and CATV Works",
-      },
-      {
-        id: 4,
-        picture: ElectricalMechanicalCivilWorks,
-        title: "Electrical, Mechanical, and Civil Works",
-      },
-      {
-        id: 5,
-        picture: SupplyOfFurniture,
-        title: "Supply of Furniture",
-      },
-    ],
-  },
-  {
-    id: 3,
-    slug: "residential",
-    heading: "Residential Works",
-    description: [
-      "We provide quality construction and engineering services for residential developments, creating safe, functional, and comfortable living spaces. From new homes to renovations and upgrades, we deliver practical and well-executed solutions tailored to our clients’ needs.",
-    ],
-    featuredProjects: [
-      {
-        id: 1,
-        picture: GeneralConstructionWorks,
-        title: "General Construction Works",
-      },
-    ],
-  },
-];
-
 const ProjectsSection = () => {
   return (
     <Box
       component="section"
-      id="projects"
       aria-labelledby="projects-heading"
       sx={styles.section}
     >
@@ -289,7 +305,7 @@ const ProjectsSection = () => {
               component="article"
               id={category.slug}
               aria-labelledby={`${category.slug}-heading`}
-              sx={styles.categoryCard}
+              sx={styles.categoryCard(category.scrollMarginTop)}
             >
               <Box sx={styles.categoryHeader}>
                 <Typography

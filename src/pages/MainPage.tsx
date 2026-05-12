@@ -7,6 +7,7 @@ import PermitsLicensesSection from "../sections/PermitsLicensesSection";
 import ProductsSection from "../sections/ProductsSection";
 import ServicesSection from "../sections/ServicesSection";
 import ContactSection from "../sections/ContactSection";
+import DesignSection from "../sections/DesignSection";
 
 const styles = {
   page: {
@@ -15,13 +16,10 @@ const styles = {
     overflowX: "hidden",
   },
 
-  section: {
+  section: (scrollMarginTop: { xs: string; md: string }) => ({
     width: "100%",
-    scrollMarginTop: {
-      xs: "80px",
-      md: "100px",
-    },
-  },
+    scrollMarginTop,
+  }),
 };
 
 const MainPage = () => {
@@ -31,32 +29,88 @@ const MainPage = () => {
         aria-labelledby="hero-title"
         component="section"
         id="home"
-        sx={styles.section}
+        sx={styles.section({
+          xs: "200px",
+          md: "250px",
+        })}
       >
         <HeroSection />
       </Box>
 
-      <Box component="section" id="about-us" sx={styles.section}>
+      <Box
+        component="section"
+        id="about-us"
+        sx={styles.section({
+          xs: "70px",
+          md: "80px",
+        })}
+      >
         <AboutSection />
       </Box>
 
-      <Box component="section" id="permits-and-licenses" sx={styles.section}>
+      <Box
+        component="section"
+        id="permits-and-licenses"
+        sx={styles.section({
+          xs: "70px",
+          md: "80px",
+        })}
+      >
         <PermitsLicensesSection />
       </Box>
 
-      <Box component="section" id="projects" sx={styles.section}>
+      <Box
+        component="section"
+        id="projects"
+        sx={styles.section({
+          xs: "70px",
+          md: "80px",
+        })}
+      >
         <ProjectsSection />
       </Box>
 
-      <Box component="section" id="products" sx={styles.section}>
+      <Box
+        component="section"
+        id="products"
+        sx={styles.section({
+          xs: "70px",
+          md: "85px",
+        })}
+      >
         <ProductsSection />
       </Box>
 
-      <Box component="section" id="services" sx={styles.section}>
+      <Box
+        component="section"
+        id="services"
+        sx={styles.section({
+          xs: "70px",
+          md: "85px",
+        })}
+      >
         <ServicesSection />
       </Box>
 
-      <Box component="section" id="contact-us" sx={styles.section}>
+      <Box
+        component="section"
+        id="design"
+        sx={styles.section({
+          xs: "90px",
+          md: "115px",
+        })}
+      >
+        <DesignSection />
+      </Box>
+
+      <Box
+        component="section"
+        id="contact-us"
+        sx={styles.section({
+          xs: "60px",
+          md: "80px",
+        })}
+      >
         <ContactSection />
       </Box>
     </Box>

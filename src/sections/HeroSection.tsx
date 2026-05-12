@@ -50,15 +50,6 @@ const styles = {
     },
   },
 
-  tagline: {
-    fontSize: { md: "1.8rem" },
-    fontWeight: 700,
-    lineHeight: 1.2,
-    maxWidth: 700,
-    textAlign: "center",
-    mt: 1,
-  },
-
   overline: {
     color: "text.secondary",
     letterSpacing: 2,
@@ -144,15 +135,6 @@ const HeroSection = () => {
       <Container maxWidth="lg" sx={styles.contentsContainer}>
         <Typography id="hero-title" component="h1" variant="h1" color="primary">
           Gerb&apos;s Electrical Trading and Services
-        </Typography>
-
-        <Typography
-          component="p"
-          variant="body1"
-          color="secondary"
-          sx={styles.tagline}
-        >
-          Built on Precision. Powered by Trust.
         </Typography>
 
         <Typography component="p" variant="overline" sx={styles.overline}>

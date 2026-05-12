@@ -58,7 +58,7 @@ const DAHUA_PRODUCTS_CONFIG: ProductsPageModel = {
             src: ASGB9XXSX,
             alt: "Dahua ASGB9XXSX",
           },
-          href: "/products/safety-and-security/dahua/asgbp9xxs-x",
+          href: "/products/safety-and-security/dahua/asgb9xxs-x",
         },
         {
           id: 2,

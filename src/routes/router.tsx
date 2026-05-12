@@ -60,6 +60,46 @@ const router = createBrowserRouter([
         },
       },
       {
+        path: "products/safety-and-security/garrett/*",
+        lazy: async () => {
+          const module =
+            await import("../pages/ProductDetails/Garrett/GarrettProductDetailsPage");
+          return { Component: module.default };
+        },
+      },
+      {
+        path: "products/safety-and-security/hanwha-vision/*",
+        lazy: async () => {
+          const module =
+            await import("../pages/ProductDetails/HanwhaVision/HanwhaVisionProductDetailsPage");
+          return { Component: module.default };
+        },
+      },
+      {
+        path: "products/safety-and-security/hid/*",
+        lazy: async () => {
+          const module =
+            await import("../pages/ProductDetails/HID/HIDProductDetailsPage");
+          return { Component: module.default };
+        },
+      },
+      {
+        path: "products/safety-and-security/safeway-systems/*",
+        lazy: async () => {
+          const module =
+            await import("../pages/ProductDetails/SafewaySystem/SafewaySystemProductDetailsPage");
+          return { Component: module.default };
+        },
+      },
+      {
+        path: "products/safety-and-security/dahua/*",
+        lazy: async () => {
+          const module =
+            await import("../pages/ProductDetails/Dahua/DahuaProductDetailsPage");
+          return { Component: module.default };
+        },
+      },
+      {
         path: "products/electrical-materials-and-equipment",
         lazy: async () => {
           const module =

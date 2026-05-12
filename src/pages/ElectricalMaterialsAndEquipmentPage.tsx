@@ -1,5 +1,5 @@
-import { Box, Typography } from "@mui/material";
-import { Link } from "react-router";
+import { Box, Button, Typography } from "@mui/material";
+import { Link as RouterLink } from "react-router";
 
 import img1 from "../assets/Products/ElectricalMaterialsAndEquipment/1.jpg";
 import img2 from "../assets/Products/ElectricalMaterialsAndEquipment/2.jpg";
@@ -106,6 +106,7 @@ const styles = {
     background:
       "linear-gradient(135deg, #F9FAFB 0%, #EEF3FB 48%, #FFFFFF 100%)",
   },
+
   section: {
     width: "100%",
     height: "100%",
@@ -115,12 +116,14 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
   },
+
   content: {
     width: "100%",
     maxWidth: 980,
     mx: "auto",
     px: { xs: 2.5, sm: 3, md: 0 },
   },
+
   eyebrow: {
     mb: 1.25,
     color: "#D71F36",
@@ -129,6 +132,7 @@ const styles = {
     letterSpacing: "0.16em",
     textTransform: "uppercase",
   },
+
   title: {
     mb: 2,
     color: "#22346E",
@@ -141,6 +145,7 @@ const styles = {
     lineHeight: 1.08,
     letterSpacing: "-0.035em",
   },
+
   description: {
     maxWidth: 860,
     mb: { xs: 4, md: 5 },
@@ -148,6 +153,7 @@ const styles = {
     fontSize: { xs: "0.98rem", md: "1.05rem" },
     lineHeight: 1.8,
   },
+
   group: {
     mb: { xs: 4, md: 5 },
     p: { xs: 2.25, sm: 3, md: 3.5 },
@@ -157,6 +163,7 @@ const styles = {
     boxShadow: "0 10px 28px rgba(15, 23, 42, 0.055)",
     position: "relative",
     overflow: "hidden",
+
     "&::before": {
       content: '""',
       position: "absolute",
@@ -166,13 +173,16 @@ const styles = {
       height: "4px",
       background: "linear-gradient(90deg, #22346E 0%, #D71F36 100%)",
     },
+
     "&:last-of-type": {
       mb: 0,
     },
   },
+
   groupHeader: {
     mb: 2.5,
   },
+
   groupTitle: {
     mb: 0.75,
     color: "#22346E",
@@ -181,12 +191,14 @@ const styles = {
     lineHeight: 1.25,
     letterSpacing: "-0.02em",
   },
+
   groupDescription: {
     maxWidth: 760,
     color: "rgba(26, 26, 26, 0.68)",
     fontSize: { xs: "0.9rem", md: "0.96rem" },
     lineHeight: 1.65,
   },
+
   productList: {
     m: 0,
     mb: { xs: 2.75, md: 3.25 },
@@ -199,6 +211,7 @@ const styles = {
     },
     gap: { xs: 1, sm: 1.25 },
     color: "#1A1A1A",
+
     "& li": {
       position: "relative",
       minHeight: 42,
@@ -214,6 +227,7 @@ const styles = {
       lineHeight: 1.45,
       fontWeight: 500,
     },
+
     "& li::before": {
       content: '""',
       position: "absolute",
@@ -227,10 +241,12 @@ const styles = {
       boxShadow: "0 0 0 4px rgba(215, 31, 54, 0.1)",
     },
   },
+
   figure: {
     m: 0,
     width: "100%",
   },
+
   imageGrid: {
     width: "100%",
     maxWidth: "100%",
@@ -243,6 +259,7 @@ const styles = {
     gap: 1.25,
     overflow: "hidden",
   },
+
   imageCell: {
     minWidth: 0,
     height: { xs: 150, sm: 190, md: 220 },
@@ -253,6 +270,7 @@ const styles = {
     border: "1px solid rgba(34, 52, 110, 0.12)",
     boxShadow: "0 10px 24px rgba(15, 23, 42, 0.08)",
   },
+
   image: {
     display: "block",
     width: "100%",
@@ -260,40 +278,65 @@ const styles = {
     maxWidth: "100%",
     objectFit: "cover",
     transition: "transform 220ms ease",
+
     "&:hover": {
       transform: "scale(1.035)",
     },
   },
-  inquiryCta: {
+
+  ctaSection: {
     mt: { xs: 5, md: 6 },
-    p: { xs: 2.5, sm: 3, md: 3.5 },
-    borderRadius: "16px",
-    border: "1px solid rgba(34, 52, 110, 0.14)",
-    backgroundColor: "rgba(255, 255, 255, 0.82)",
-    boxShadow: "0 12px 32px rgba(15, 23, 42, 0.06)",
-    textAlign: "center",
   },
-  inquiryText: {
-    color: "rgba(26, 26, 26, 0.82)",
-    fontSize: { xs: "1rem", sm: "1.1rem", md: "1.18rem" },
-    fontWeight: 600,
-    lineHeight: 1.6,
+
+  ctaBox: {
+    borderRadius: "24px",
+    p: { xs: 3, md: 4 },
+    border: "1px solid rgba(34,52,110,0.10)",
+    background:
+      "linear-gradient(135deg, rgba(34,52,110,0.96), rgba(34,52,110,0.88))",
+    color: "#FFFFFF",
+    boxShadow: "0 22px 60px rgba(15,23,42,0.18)",
   },
-  inquiryLink: {
-    display: "inline-flex",
-    color: "#22346E",
+
+  ctaContent: {
+    display: "flex",
+    flexDirection: { xs: "column", md: "row" },
+    alignItems: { xs: "flex-start", md: "center" },
+    justifyContent: "space-between",
+    gap: 3,
+  },
+
+  ctaTitle: {
     fontWeight: 800,
-    textDecoration: "none",
-    borderBottom: "2px solid rgba(215, 31, 54, 0.45)",
-    transition: "color 180ms ease, border-color 180ms ease",
+    lineHeight: 1.2,
+    fontSize: { xs: "1.45rem", md: "2rem" },
+  },
+
+  ctaDescription: {
+    mt: 1,
+    maxWidth: 720,
+    color: "rgba(255,255,255,0.78)",
+    lineHeight: 1.75,
+  },
+
+  ctaButton: {
+    width: { xs: "100%", sm: "fit-content" },
+    borderRadius: "999px",
+    px: 3,
+    py: 1.2,
+    textTransform: "none",
+    fontWeight: 800,
+    color: "#22346E",
+    backgroundColor: "#FFFFFF",
+    whiteSpace: "nowrap",
+
     "&:hover": {
-      color: "#D71F36",
-      borderBottomColor: "#D71F36",
+      backgroundColor: "#F8FAFC",
     },
+
     "&:focus-visible": {
-      outline: "3px solid rgba(34, 52, 110, 0.22)",
+      outline: "3px solid rgba(255,255,255,0.45)",
       outlineOffset: "4px",
-      borderRadius: "4px",
     },
   },
 };
@@ -376,16 +419,34 @@ const ElectricalMaterialsAndEquipmentPage = () => {
           ))}
 
           <Box
-            component="aside"
-            aria-label="Electrical materials and equipment inquiry"
-            sx={styles.inquiryCta}
+            component="section"
+            aria-label="Electrical materials and equipment product inquiry"
+            sx={styles.ctaSection}
           >
-            <Typography component="p" sx={styles.inquiryText}>
-              Looking for more Electrical Materials and Equipment?{" "}
-              <Box component={Link} to="/#contact-us" sx={styles.inquiryLink}>
-                Inquire Now!
+            <Box sx={styles.ctaBox}>
+              <Box sx={styles.ctaContent}>
+                <Box>
+                  <Typography component="h2" sx={styles.ctaTitle}>
+                    Looking for more Electrical Materials and Equipment?
+                  </Typography>
+
+                  <Typography component="p" sx={styles.ctaDescription}>
+                    Tell us what product, equipment, or project requirement you
+                    need, and our team will help you find the right electrical
+                    solution.
+                  </Typography>
+                </Box>
+
+                <Button
+                  component={RouterLink}
+                  to="/#contact-us"
+                  sx={styles.ctaButton}
+                  aria-label="Inquire about more electrical materials and equipment"
+                >
+                  Inquire Now
+                </Button>
               </Box>
-            </Typography>
+            </Box>
           </Box>
         </Box>
       </Box>

@@ -460,7 +460,7 @@ const BrandsPage = ({ content }: BrandsPageProps) => {
                 sx={styles.ctaButton}
                 aria-label="Contact Gerbs Electrical Trading and Services"
               >
-                Request a Quote
+                Inquire Now
               </Button>
             </Box>
           </Box>

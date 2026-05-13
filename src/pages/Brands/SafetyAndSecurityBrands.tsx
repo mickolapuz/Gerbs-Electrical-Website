@@ -7,7 +7,7 @@ import SafewaySystemLogo from "../../assets/Products/Logos/SAFEWAYSYSTEM.png";
 import DahuaLogo from "../../assets/Products/Logos/DAHUA.png";
 
 const SAFETY_AND_SECURITY_BRANDS_CONFIG: BrandsPageModel = {
-  page: "Safety and Seucrity",
+  page: "Safety and Security",
   description:
     "Browse the safety and security brands we supply, covering trusted solutions for detection, inspection, surveillance, access control, parking control, and entrance management across different project requirements.",
   brands: [

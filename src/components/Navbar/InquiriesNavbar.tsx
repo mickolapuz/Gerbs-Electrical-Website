@@ -12,10 +12,7 @@ const inquiries: Inquiries[] = [
     id: 1,
     title: "Contact Number:",
     type: "phone",
-    children: [
-      "+63 917 174 3129 (Engr. Robelito Gerbise)",
-      "+63 995 957 8190 (Engr. Elaijah Gerbise)",
-    ],
+    children: ["+63 917 174 3129", "+63 995 957 8190", "+63 956 501 6705"],
   },
   {
     id: 2,
